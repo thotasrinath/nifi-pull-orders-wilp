@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/nifi-pull-orders-wilp.iml" filepath="$PROJECT_DIR$/nifi-pull-orders-wilp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nifi-pull-orders-wilp-nar/nifi-pull-orders-wilp-nar.iml" filepath="$PROJECT_DIR$/nifi-pull-orders-wilp-nar/nifi-pull-orders-wilp-nar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nifi-pull-orders-wilp-processors/nifi-pull-orders-wilp-processors.iml" filepath="$PROJECT_DIR$/nifi-pull-orders-wilp-processors/nifi-pull-orders-wilp-processors.iml" />
+    </modules>
+  </component>
+</project>
