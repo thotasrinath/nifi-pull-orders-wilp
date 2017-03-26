@@ -16,8 +16,10 @@
  */
 package org.bits.wilp.processors;
 
+import com.google.gson.Gson;
 import com.srinath.OrderService;
 import com.srinath.OrderSimulator;
+import com.srinath.VO.OrderProductsVO;
 import com.srinath.mapping.OrderProducts;
 import org.apache.nifi.annotation.behavior.*;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
@@ -115,8 +117,8 @@ public class PullOrdersWilp extends AbstractProcessor {
 
         try {
 
-            List<OrderProducts> results = orderService.getOrdersAboveOrderNumber(previousOrderNumber);
-            for (OrderProducts op : results) {
+            List<OrderProductsVO> results = orderService.getOrdersAboveOrderNumber(previousOrderNumber);
+            for (OrderProductsVO op : results) {
 
                 previousOrderNumber = op.getOrder().getOrderId() + 1;
 
@@ -129,12 +131,10 @@ public class PullOrdersWilp extends AbstractProcessor {
                 @Override
                 public void process(OutputStream outputStream) throws IOException {
 
-                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    ObjectOutputStream oos = new ObjectOutputStream(bos);
-                    oos.writeObject(results);
-                    byte[] bytes = bos.toByteArray();
+                    Gson gson =new Gson();
+                    String json = gson.toJson(results);
 
-                    outputStream.write(bytes);
+                    outputStream.write(json.getBytes());
 
                 }
             });
